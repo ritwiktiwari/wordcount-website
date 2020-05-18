@@ -15,7 +15,7 @@ def index(request):
         context = {
             'words': words,
             'count': count,
-            'lexicon': lexicon.items(),
+            'lexicon': list(lexicon.items()),
         }
         return render(request, 'index.html', context)
     return render(request, 'index.html')

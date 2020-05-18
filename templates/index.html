@@ -16,33 +16,30 @@
         <script>document.getElementById("fulltext").value = "{{ words }}"; </script>
 
         <div class="row">
-            <div class="col-12">
+            <div class="col-6">
                 <div class="card">
-                 <div class="card-body text-center">
-                     <p class="lead">Words and Occurrences</p>
+                     <div class="card-body text-center">
+                         <p class="lead">Words and Occurrences</p>
+                    </div>
+                     <table class="table">
+                        <thead>
+                            <tr>
+                                <th scope="col">Word</th>
+                                <th scope="col">Occurrence</th>
+                            </tr>
+                        </thead>
+                         <tbody>
+                         {% for word, occurrence in lexicon %}
+                            <tr>
+                                    <td>{{ word }}</td>
+                                    <td>{{ occurrence }}</td>
+                            </tr>
+                         {% endfor %}
+                          </tbody>
+                        </table>
                 </div>
-                 <table class="table">
-                    <thead>
-                        <tr>
-                            <th scope="col">#</th>
-                            <th scope="col">Word</th>
-                            <th scope="col">Occurrence</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                     {% for word, occurrence in lexicon %}
-                     <tr>
-                            <th scope="row">1</th>
-                            <td>{{ word }}</td>
-                            <td>{{ occurrence }}</td>
-                     </tr>
-                     {% endfor %}
-
-                    </tbody>
-                </table>
             </div>
         </div>
-    </div>
         <p class="lead">Total words: {{ count }}</p>
         {% endif %}
         <div class="float-sm-right">
