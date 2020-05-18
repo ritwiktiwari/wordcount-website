@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% block content %}
+<!-- Page Content -->
+<div class="container">
+  <div class="card border-0 shadow my-5">
+    <div class="card-body p-5">
+      <h1 class="font-weight-light">Fixed Full Page Background Image</h1>
+        <form>
+            <div class="form-group">
+            <label for="exampleFormControlTextarea1">Example textarea</label>
+            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary mb-2">Confirm identity</button>
+        </form>
+      <p class="lead">In this snippet, the background image is fixed to the body element. Content on the page will scroll, but the image will remain in a fixed position!</p>
+      <p class="lead">Scroll down...</p>
+      <div style="height: 700px"></div>
+      <p class="lead mb-0">Background image by <a href="https://unsplash.com/@impatrickt">Patrick Tomasso</a> on <a href="https://unsplash.com/">Unsplash</a></p>
+    </div>
+  </div>
+</div>
+{% endblock %}
