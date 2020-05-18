@@ -5,15 +5,49 @@
   <div class="card border-0 shadow my-5">
     <div class="card-body p-5">
       <h1 class="font-weight-light">Enter your text below</h1>
-        <form action="{% url 'count' %}">
+        <form action="{% url 'index' %}" method="post">
+            {% csrf_token %}
             <div class="form-group">
-            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+            <textarea class="form-control" id="fulltext" rows="3" name="fulltext" {% if words %} value="{{ words }}" {% endif %}></textarea>
             </div>
             <button type="submit" class="btn btn-primary mb-2">Count</button>
         </form>
-      <p class="lead">In this snippet, the background image is fixed to the body element. Content on the page will scroll, but the image will remain in a fixed position!</p>
+        {% if words %}
+        <script>document.getElementById("fulltext").value = "{{ words }}"; </script>
 
-      <p class="lead mb-0">Background image by <a href="https://unsplash.com/@impatrickt">Patrick Tomasso</a> on <a href="https://unsplash.com/">Unsplash</a></p>
+        <div class="row">
+            <div class="col-12">
+                <div class="card">
+                 <div class="card-body text-center">
+                     <p class="lead">Words and Occurrences</p>
+                </div>
+                 <table class="table">
+                    <thead>
+                        <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">Word</th>
+                            <th scope="col">Occurrence</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                     {% for word, occurrence in lexicon %}
+                     <tr>
+                            <th scope="row">1</th>
+                            <td>{{ word }}</td>
+                            <td>{{ occurrence }}</td>
+                     </tr>
+                     {% endfor %}
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+        <p class="lead">Total words: {{ count }}</p>
+        {% endif %}
+        <div class="float-sm-right">
+            <p class="font-weight-light">Background image by <a href="https://unsplash.com/@impatrickt">Patrick Tomasso</a> on <a href="https://unsplash.com/">Unsplash</a></p>
+        </div>
     </div>
   </div>
 </div>
